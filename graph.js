@@ -16,7 +16,7 @@ var jsdom = require('jsdom');
 var xmldom = require('xmldom');
 
 // Load the domain and problem.
-strips.load('./examples/dinner/domain.pddl', './examples/dinner/problem.pddl', function(domain, problem) {
+strips.load('./examples/dockworkerrobot/domain.txt', './examples/dockworkerrobot/problem.txt', function(domain, problem) {
     var graph = strips.graph(domain, problem);
 
     var htmlStub = '<html><head></head><body><div id="dataviz-container"></div><script src="http://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script></body></html>'; // html file skull with a container div for the d3 dataviz
@@ -41,7 +41,7 @@ function getTreeData(graph, layerIndex) {
     var layer = graph[i];
     var actionHash = {};
     var actionHash2 = {};
-    
+
     for (var j in layer) {
         var action = layer[j];
 
@@ -76,8 +76,8 @@ function getTreeData(graph, layerIndex) {
             else {
                 // This is a child node of the parent.
                 p0.children.push(node);
-            }   
-                         
+            }
+
             node.parent = p0.name;
         }
 
@@ -147,7 +147,7 @@ function getGraphData(graph, layerIndex) {
                     // This node already exists, so link to it.
                     data.links.push({ source: parentIndex2, target: node3Hash[node3.name], depth: 3 });
                 }
-            }            
+            }
         }
     }
 
@@ -181,7 +181,7 @@ function drawTree(treeData, window) {
     // Enter the nodes.
     var nodeEnter = node.enter().append("g")
     .attr("class", "node")
-    .attr("transform", function(d) { 
+    .attr("transform", function(d) {
     return "translate(" + d.y + "," + d.x + ")"; });
 
     nodeEnter.append("circle")
@@ -189,10 +189,10 @@ function drawTree(treeData, window) {
     .style({ "fill": "#fff", stroke: 'steelblue', 'stroke-width': '3px' });
 
     nodeEnter.append("text")
-    .attr("x", function(d) { 
+    .attr("x", function(d) {
     return d.children || d._children ? -13 : 13; })
     .attr("dy", ".35em")
-    .attr("text-anchor", function(d) { 
+    .attr("text-anchor", function(d) {
     return d.children || d._children ? "end" : "start"; })
     .text(function(d) { return d.name; })
     .style({"fill-opacity": 1, 'fill': '#000'});
@@ -272,7 +272,7 @@ function drawGraph(treeData, window) {
 
     force.on("tick", function(e) {
         var ky = e.alpha;
-        
+
         links.forEach(function(d, i) {
           d.target.y += (d.target.depth * 100 - d.target.y) * 5 * ky;
         });
@@ -298,8 +298,8 @@ function drawGraph(treeData, window) {
             .attr("x2", function(d) { return isHorizontal ? d.target.y : d.target.x; })
             .attr("y2", function(d) { return isHorizontal ? d.target.x : d.target.y; });
 
-        gnodes.attr("transform", function(d) { 
-            return 'translate(' + [isHorizontal ? d.y : d.x, isHorizontal ? d.x : d.y] + ')'; 
+        gnodes.attr("transform", function(d) {
+            return 'translate(' + [isHorizontal ? d.y : d.x, isHorizontal ? d.x : d.y] + ')';
         });
     });
 

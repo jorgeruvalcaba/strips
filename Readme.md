@@ -9,6 +9,16 @@ Try it online at https://stripsfiddle.herokuapp.com
 npm install strips
 ```
 
+# Requirements for use strips
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://docs.npmjs.com/getting-started/installing-node)
+
+# How to Run graph.js
+1. From your console go to the project source folder.
+2. Install all the dependencies with `npm install`.
+3. Build the graph and save it to a graph.svg file with `node --harmony graph`.
+4. Get the graph.
+
 The following examples show how to solve planning problems by identifying the optimal set of actions to achieve a goal. For example, stacking blocks, Towers of Hanoi, and even [Starcraft](https://github.com/primaryobjects/strips#starcraft) can be solved by the AI (see below, it's pretty neat!).
 
 Several examples from the [Blocks World](http://en.wikipedia.org/wiki/Blocks_world) domain are included in this project, in which the AI is able to successfully plan the series of steps to move and stack blocks on a series of tables.
@@ -26,19 +36,19 @@ The domain and problem PDDL files are parsed via PEG.js, producing a JSON [objec
 
 ## Example Blocks World Problems
 
-[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld1/domain.txt) | 
+[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld1/domain.txt) |
 [Problem](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld1/problem.txt)
 Move blocks a, b from table x to table y. Multiple blocks are permitted on a table. The only available action is "move".
 
-[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld2/domain.txt) | 
+[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld2/domain.txt) |
 [Problem](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld2/problem.txt)
 Moves blocks a, b from table x to a stack ab on table y. Multiple blocks are permitted on a table. Available actions include "move", "stack", and "unstack".
 
-[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld2/domain.txt) | 
+[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld2/domain.txt) |
 [Problem](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld2/problem2.txt)
 Unstacks blocks ba from table x to a stack ab on table y. Multiple blocks are permitted on a table. Available actions include "move", "stack", and "unstack".
 
-[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld3/domain.txt) | 
+[Domain](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld3/domain.txt) |
 [Problem](https://github.com/primaryobjects/strips/blob/master/examples/blocksworld3/problem.txt)
 The fun one! Unstack blocks ba from table 1 to a stack ab on table 3. Only one block or stack is permitted on a table. The AI needs to plan for moving a block temporarily to table 2, while it sets up the correct order for stacking on table 3. Available actions include "move", "stack", and "unstack".
 
